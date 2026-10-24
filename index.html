@@ -198,6 +198,12 @@
 
   /* book & visit */
   .book{background:radial-gradient(ellipse 60% 70% at 15% 30%,rgba(209,15,31,.22),transparent 70%),var(--black);border-top:1px solid var(--line)}
+  .book .photo{object-position:50% 20%;filter:saturate(.95)}
+  .book{padding-top:clamp(240px,26vw,380px)}
+  .book::after{content:"";position:absolute;inset:0;z-index:1;background:
+      linear-gradient(to bottom,var(--black) 0%,rgba(7,7,7,.15) 14%,rgba(7,7,7,.35) 30%,rgba(7,7,7,.82) 52%,var(--black) 100%),
+      linear-gradient(to right,rgba(7,7,7,.6) 0%,rgba(7,7,7,0) 50%,rgba(7,7,7,.4) 100%)}
+  .book .wrap{position:relative;z-index:2}
   .book-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(2.4rem,6vw,5rem);align-items:start}
   .book h2 .gothic{color:var(--red);text-shadow:4px 4px 0 #000}
   .walkin{display:inline-flex;align-items:center;gap:.7em;border:1px solid var(--line);font-family:var(--label);text-transform:uppercase;letter-spacing:.2em;font-size:.8rem;padding:.6em 1em;margin:1.6rem 0 2.2rem}
@@ -423,7 +429,7 @@
 </section>
 
 <!-- 04 BOOK & VISIT -->
-<section id="book" class="chapter block book">
+<section id="book" class="chapter block book" data-photo="images/shop-front.jpg" data-alt="The front of True Warrior Tattoo under the True Warrior sign">
   <div class="wrap book-grid">
     <div>
       <div class="label reveal"><b>04</b> Book &amp; Visit</div>
