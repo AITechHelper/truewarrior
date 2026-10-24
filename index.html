@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>True Warrior Project — Tattoo Parlor &amp; Strength House</title>
+<meta name="description" content="True Warrior Project — traditional tattoos and $20 piercings in South Houston, TX, the True Warrior House strength crew, and The G Brand apparel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=UnifrakturCook:wght@700&family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#070707;
+    --ink:#0f0f0f;
+    --line:#242424;
+    --red:#d10f1f;
+    --red-hot:#ff2233;
+    --blood:#7a0610;
+    --bone:#efe8dc;
+    --ash:#9a9590;
+    --display:'Anton', Impact, sans-serif;
+    --gothic:'UnifrakturCook', 'Old English Text MT', serif;
+    --label:'Oswald', sans-serif;
+    --body:'Inter', system-ui, sans-serif;
+    --neon-red:0 0 4px #fff,0 0 10px var(--red-hot),0 0 22px var(--red-hot),0 0 46px var(--red),0 0 90px var(--red);
+    --neon-white:0 0 4px #fff,0 0 12px #fff,0 0 26px #ff5a66,0 0 54px var(--red);
+    --pad:clamp(20px,4vw,60px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  html,body{overflow-x:clip}
+  body{background:var(--black);color:var(--bone);font-family:var(--body);line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+
+  /* film grain */
+  body::before{content:"";position:fixed;inset:-50%;z-index:100;pointer-events:none;opacity:.06;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain 1s steps(4) infinite}
+  @keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
+
+  .wrap{width:min(1280px,100% - 32px);margin-inline:auto}
+  .label{font-family:var(--label);text-transform:uppercase;letter-spacing:.32em;font-size:.78rem;color:var(--red-hot);display:flex;align-items:center;gap:.9em}
+  .label b{font-weight:600;color:#000;background:var(--red);padding:.1em .55em;letter-spacing:.18em}
+  h2{font-family:var(--display);text-transform:uppercase;font-weight:400;font-size:clamp(3rem,8vw,7rem);line-height:.9;letter-spacing:.005em}
+  h2 em{font-style:normal;color:var(--red)}
+  .gothic{font-family:var(--gothic);text-transform:none;letter-spacing:0}
+  .lede{color:#cfc8bd;font-size:1.08rem;max-width:480px}
+
+  .btn{display:inline-flex;align-items:center;gap:.7em;font-family:var(--label);font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:.9rem;padding:1em 1.8em;border:2px solid var(--red);background:var(--red);color:#fff;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));transition:background .2s,color .2s,transform .2s;cursor:pointer}
+  .btn:hover{background:transparent;color:var(--red-hot);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;border-color:rgba(239,232,220,.6);color:var(--bone)}
+  .btn.ghost:hover{border-color:var(--red);color:var(--red-hot)}
+  .btn svg{width:18px;height:18px}
+  .actions{display:flex;flex-wrap:wrap;gap:.9rem}
+
+  /* photo slots: [data-photo] gets an <img class="photo"> once the file loads */
+  [data-photo]{position:relative;overflow:hidden}
+  .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+
+  .neon{color:#ffe1e3;text-shadow:var(--neon-red);animation:flicker 6s infinite}
+  .neon.white{color:#fff;text-shadow:var(--neon-white);animation-delay:2.2s;animation-duration:8s}
+  @keyframes flicker{0%,18%,20%,22%,60%,62%,100%{opacity:1}19%,21%,61%{opacity:.35;text-shadow:none}}
+
+  /* NAV */
+  header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+  header.scrolled{background:rgba(7,7,7,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .logo{display:flex;align-items:center;gap:.7rem}
+  .logo-mark{width:46px;height:46px;display:grid;place-items:center;background:var(--red);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+  .logo-mark img{width:72%;filter:invert(1);mix-blend-mode:multiply}
+  .logo-text{font-family:var(--display);text-transform:uppercase;letter-spacing:.08em;font-size:1.05rem;line-height:1}
+  .logo-text small{display:block;font-family:var(--label);font-size:.62rem;letter-spacing:.38em;color:var(--ash);margin-top:4px}
+  .nav ul{display:flex;gap:2.4rem;list-style:none;counter-reset:n}
+  .nav ul a{font-family:var(--label);text-transform:uppercase;letter-spacing:.2em;font-size:.82rem;color:var(--ash);position:relative;transition:color .2s}
+  .nav ul a::before{counter-increment:n;content:"0" counter(n);color:var(--red);margin-right:.6em;font-size:.85em}
+  .nav ul a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--red);transition:width .25s}
+  .nav ul a:hover,.nav ul a.active{color:var(--bone)}
+  .nav ul a:hover::after,.nav ul a.active::after{width:100%}
+  .nav .btn{padding:.75em 1.3em;font-size:.78rem}
+  .burger{display:none;background:none;border:0;color:var(--bone);width:44px;height:44px;cursor:pointer}
+  .burger span{display:block;height:2px;background:currentColor;margin:7px 8px;transition:transform .3s,opacity .3s}
+  .menu-open .burger span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+  .menu-open .burger span:nth-child(2){opacity:0}
+  .menu-open .burger span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+
+  /* ============ SPLIT HERO ============ */
+  .split{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:max(720px,100svh)}
+  .side{position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:120px var(--pad) clamp(48px,7vh,80px);isolation:isolate}
+  .side .scene{position:absolute;inset:0;z-index:-2;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .6s}
+  .side .shade{position:absolute;inset:0;z-index:-1;pointer-events:none}
+  .side .scene .photo{filter:saturate(.85) contrast(1.05)}
+  .split:hover .side .scene{filter:brightness(.45) saturate(.6)}
+  .split .side:hover .scene{filter:none;transform:scale(1.04)}
+  .side-content{position:relative;max-width:480px}
+  .side-kicker{font-family:var(--label);text-transform:uppercase;letter-spacing:.32em;font-size:.75rem;color:var(--bone);opacity:.8;margin-bottom:.8rem;display:flex;gap:.8em;align-items:center}
+  .side-kicker b{background:var(--red);color:#000;padding:.15em .6em;letter-spacing:.2em}
+  .side h1,.side .h1{font-weight:400;line-height:.86;margin-bottom:1rem}
+  .side p{color:#d6cfc4;max-width:400px;margin-bottom:1.8rem}
+  .side .enter{display:inline-flex;align-items:center;gap:.8em;font-family:var(--label);font-weight:600;text-transform:uppercase;letter-spacing:.22em;font-size:.88rem;border-bottom:2px solid var(--red);padding-bottom:.4em;transition:gap .25s,color .25s}
+  .side .enter svg{width:18px;height:18px}
+  .side:hover .enter{gap:1.4em;color:var(--red-hot)}
+  .parlor .scene{background:radial-gradient(ellipse 70% 55% at 45% 30%,rgba(255,34,51,.32),transparent 70%),linear-gradient(#2a080c,#140406)}
+  .parlor .shade{background:linear-gradient(to top,rgba(5,1,2,.96) 0%,rgba(5,1,2,.55) 38%,rgba(5,1,2,0) 70%)}
+  .parlor h1{font-family:var(--gothic);font-size:clamp(3.6rem,8vw,7.4rem);color:var(--bone);text-shadow:5px 5px 0 var(--blood)}
+  .parlor-sign{position:absolute;top:118px;left:var(--pad);font-family:var(--gothic);font-size:clamp(3rem,6vw,5.4rem);line-height:1}
+  .parlor-sign small{display:block;font-family:var(--label);font-size:.2em;letter-spacing:.5em;text-transform:uppercase;margin-top:.3em;padding-left:.4em}
+  .open-sign{position:absolute;top:140px;right:var(--pad);border:3px solid #ff4d5c;border-radius:10px;padding:.15em .55em;font-family:var(--display);font-size:1.4rem;letter-spacing:.12em;box-shadow:0 0 10px var(--red-hot),inset 0 0 10px var(--red-hot)}
+  .gym .scene{background:radial-gradient(ellipse 60% 50% at 55% 18%,rgba(255,255,255,.14),transparent 70%),linear-gradient(#2a2a2a,#151515)}
+  .gym .shade{background:linear-gradient(to top,rgba(4,4,4,.97) 0%,rgba(4,4,4,.55) 38%,rgba(4,4,4,0) 70%)}
+  .gym .h1{font-family:var(--display);text-transform:uppercase;font-size:clamp(3.6rem,8vw,7.4rem);letter-spacing:.01em}
+  .gym .h1 span{color:var(--red);text-shadow:4px 4px 0 #000}
+  .gym-sign{position:absolute;top:118px;right:var(--pad);text-align:right;font-family:var(--display);text-transform:uppercase;font-size:clamp(2.6rem,5vw,4.6rem);line-height:.95}
+  .gym-sign small{display:block;font-family:var(--label);font-size:.24em;letter-spacing:.5em;margin-top:.4em}
+  .gym-sign i{display:block;height:4px;margin:.25em 0 0 auto;width:80%;background:#ff4d5c;box-shadow:0 0 10px var(--red-hot),0 0 26px var(--red);border-radius:4px}
+  .emblem{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:150px;height:150px;z-index:5;pointer-events:none}
+  .emblem .ring{position:absolute;inset:0;animation:spin 24s linear infinite}
+  .emblem .core{position:absolute;inset:26px;border-radius:50%;background:var(--black);border:3px solid var(--red);display:grid;place-items:center;overflow:hidden;box-shadow:0 0 0 6px var(--black),0 0 40px rgba(209,15,31,.5)}
+  .emblem .core img{width:74%}
+  .split::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;transform:translateX(-50%);background:linear-gradient(transparent,var(--red) 20%,var(--red) 80%,transparent);z-index:4}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* MARQUEE */
+  .marquee{background:var(--red);color:#000;overflow:hidden;transform:rotate(-1.6deg);margin:-28px -20px 0;position:relative;z-index:6;border-block:3px solid #000}
+  .marquee-track{display:flex;width:max-content;animation:scroll 32s linear infinite}
+  .marquee span{font-family:var(--display);text-transform:uppercase;font-size:clamp(1.3rem,2.6vw,2rem);padding:.5em 0;white-space:nowrap;display:flex;align-items:center}
+  .marquee span::after{content:"✦";margin:0 1.2em;font-size:.7em}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ============ CHAPTERS ============ */
+  .chapter{position:relative}
+  /* full-bleed photo opener, same idea as each half of the hero */
+  .cover{min-height:min(92svh,900px);display:flex;align-items:flex-end;padding:140px 0 clamp(60px,9vw,110px)}
+  .cover .photo{transform:scale(1.08);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+  .cover.in-view .photo{transform:scale(1)}
+  .cover::after{content:"";position:absolute;inset:0;z-index:1;background:
+      linear-gradient(to bottom,var(--black) 0%,rgba(7,7,7,0) 22%),
+      linear-gradient(to top,var(--black) 2%,rgba(7,7,7,.78) 34%,rgba(7,7,7,.2) 70%),
+      linear-gradient(to right,rgba(7,7,7,.7),rgba(7,7,7,0) 65%)}
+  .cover .wrap{position:relative;z-index:2}
+  .cover .big-num{position:absolute;right:0;bottom:-.12em;font-family:var(--display);font-size:clamp(9rem,26vw,24rem);line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(239,232,220,.18);pointer-events:none}
+  .cover .wordmark{width:min(600px,92%);margin:1.4rem 0 1.4rem;filter:drop-shadow(0 6px 24px rgba(0,0,0,.7))}
+  .cover .lede{margin-bottom:1.6rem}
+  .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+  .chips span{font-family:var(--label);text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;border:1px solid rgba(239,232,220,.3);padding:.45em .95em;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);background:rgba(0,0,0,.3)}
+  .chips span.hot{background:var(--red);border-color:var(--red);color:#000;font-weight:600}
+
+  .block{padding:clamp(70px,9vw,120px) 0}
+  .block-head{display:flex;justify-content:space-between;align-items:end;gap:1.5rem;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,44px)}
+  .block-head h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2rem,4.4vw,3.4rem);line-height:1}
+
+  /* artists */
+  .artists{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .artist{position:relative;aspect-ratio:3/4.1;overflow:hidden;background:var(--ink);isolation:isolate}
+  .artist .photo{filter:grayscale(.5) contrast(1.08);transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s}
+  .artist:hover .photo{filter:none;transform:scale(1.06)}
+  .artist::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(0,0,0,.92),rgba(0,0,0,0) 55%)}
+  .artist .info{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.2rem;display:flex;justify-content:space-between;align-items:end;gap:.6rem}
+  .artist h4{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(1.3rem,2.2vw,1.9rem);line-height:1}
+  .artist .role{font-family:var(--label);text-transform:uppercase;letter-spacing:.2em;font-size:.68rem;color:var(--ash);margin-top:.35rem}
+  .artist .bar{position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--red);z-index:3;transition:width .45s}
+  .artist:hover .bar{width:100%}
+  .artist .tag{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--label);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;background:var(--red);color:#000;padding:.3em .7em;font-weight:600}
+  .ig{width:40px;height:40px;flex:none;display:grid;place-items:center;border:1px solid rgba(239,232,220,.3);color:var(--bone);transition:all .2s}
+  .ig:hover{background:var(--red);border-color:var(--red);color:#000}
+  .ig svg{width:18px;height:18px}
+
+  /* house */
+  .crew{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+  .crew h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(3rem,7vw,6rem);line-height:.9}
+  .crew h3 .outline{color:transparent;-webkit-text-stroke:2px var(--bone)}
+  .crew .lede{margin:1.4rem 0 1.8rem}
+  .ticks{list-style:none;display:grid;gap:.7rem;margin-bottom:2.2rem}
+  .ticks li{display:flex;gap:.9rem;align-items:center;font-family:var(--label);text-transform:uppercase;letter-spacing:.14em;font-size:.92rem}
+  .ticks li::before{content:"";width:22px;height:2px;background:var(--red)}
+  .crew-photo{aspect-ratio:4/5;box-shadow:24px 24px 0 var(--red)}
+
+  /* shop strip */
+  .strip{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(220px,23vw,300px);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;padding:4px 16px 22px;margin:0 -16px;scrollbar-width:thin;scrollbar-color:var(--red) transparent}
+  .strip::-webkit-scrollbar{height:4px}
+  .strip::-webkit-scrollbar-thumb{background:var(--red)}
+  .item{scroll-snap-align:start;display:block}
+  .item-img{aspect-ratio:3/4;background:var(--ink);border:1px solid var(--line);transition:border-color .3s}
+  .item-img .photo{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+  .item:hover .item-img{border-color:var(--red)}
+  .item:hover .photo{transform:scale(1.05)}
+  .item h5{font-family:var(--label);font-weight:500;text-transform:uppercase;letter-spacing:.08em;font-size:1rem;margin-top:.9rem;display:flex;justify-content:space-between;gap:.5rem}
+  .item h5::after{content:"→";color:var(--red-hot);transition:transform .25s}
+  .item:hover h5::after{transform:translateX(5px)}
+  .item .variant{color:var(--ash);font-size:.85rem}
+  .strip-nav{display:flex;gap:.5rem}
+  .strip-nav button{width:48px;height:48px;border:1px solid var(--line);background:transparent;color:var(--bone);display:grid;place-items:center;cursor:pointer;transition:all .2s}
+  .strip-nav button:hover{background:var(--red);border-color:var(--red);color:#000}
+  .strip-nav svg{width:20px;height:20px}
+  .strip-nav button:first-child svg{transform:rotate(180deg)}
+  .ship{font-family:var(--label);text-transform:uppercase;letter-spacing:.22em;font-size:.75rem;color:var(--ash);margin-top:.8rem}
+  .ship b{color:var(--red-hot);font-weight:500}
+
+  /* book & visit */
+  .book{background:radial-gradient(ellipse 60% 70% at 15% 30%,rgba(209,15,31,.22),transparent 70%),var(--black);border-top:1px solid var(--line)}
+  .book-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(2.4rem,6vw,5rem);align-items:start}
+  .book h2 .gothic{color:var(--red);text-shadow:4px 4px 0 #000}
+  .walkin{display:inline-flex;align-items:center;gap:.7em;border:1px solid var(--line);font-family:var(--label);text-transform:uppercase;letter-spacing:.2em;font-size:.8rem;padding:.6em 1em;margin:1.6rem 0 2.2rem}
+  .walkin i{width:9px;height:9px;border-radius:50%;background:#2bff6a;box-shadow:0 0 10px #2bff6a;animation:pulse 1.4s ease-in-out infinite}
+  @keyframes pulse{50%{opacity:.35}}
+  .contact{display:grid;border-top:1px solid var(--line)}
+  .contact a,.contact div{display:grid;grid-template-columns:110px 1fr;gap:1rem;padding:1.05rem 0;border-bottom:1px solid var(--line);align-items:baseline;transition:color .2s}
+  .contact a:hover{color:var(--red-hot)}
+  .contact span{font-family:var(--label);text-transform:uppercase;letter-spacing:.24em;font-size:.7rem;color:var(--ash)}
+  .contact strong{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(1.15rem,2vw,1.45rem);letter-spacing:.02em;line-height:1.25}
+  form{background:var(--ink);border:1px solid var(--line);border-top:4px solid var(--red);padding:clamp(1.6rem,4vw,2.6rem)}
+  form h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:1.9rem;margin-bottom:1.4rem}
+  .field{margin-bottom:1.1rem}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  label{display:block;font-family:var(--label);text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--ash);margin-bottom:.45rem}
+  input,select,textarea{width:100%;background:var(--black);border:1px solid var(--line);color:var(--bone);font:inherit;font-size:.98rem;padding:.85em 1em;border-radius:0;outline:none;transition:border-color .2s;appearance:none}
+  select{background-image:linear-gradient(45deg,transparent 50%,var(--red) 50%),linear-gradient(135deg,var(--red) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat}
+  input:focus,select:focus,textarea:focus{border-color:var(--red)}
+  textarea{min-height:110px;resize:vertical}
+  form .btn{width:100%;justify-content:center;margin-top:.6rem}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:42px 0 30px}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;gap:1.4rem;flex-wrap:wrap;font-size:.8rem;color:var(--ash)}
+  .socials{display:flex;gap:.6rem}
+  .socials .ig{border-color:var(--line)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+  /* RESPONSIVE */
+  @media (max-width:1020px){
+    .crew,.book-grid{grid-template-columns:1fr}
+    .artists{grid-template-columns:repeat(2,1fr)}
+    .crew-photo{max-width:520px;box-shadow:16px 16px 0 var(--red)}
+  }
+  @media (max-width:860px){
+    .nav ul,.nav > .btn{display:none}
+    .burger{display:block}
+    .menu-open .nav ul{display:flex;position:fixed;inset:78px 0 0;background:var(--black);flex-direction:column;align-items:center;justify-content:center;gap:2.4rem}
+    .menu-open .nav ul a{font-family:var(--display);font-size:2.6rem;letter-spacing:.04em;color:var(--bone)}
+    .menu-open header{background:var(--black);backdrop-filter:none;-webkit-backdrop-filter:none}
+    .menu-open{overflow:hidden}
+    .split{grid-template-columns:1fr;min-height:0}
+    .side{min-height:max(600px,82svh)}
+    .gym{padding-top:150px}
+    .parlor-sign{top:96px}
+    .gym .gym-sign{top:70px}
+    .split::after{left:0;right:0;top:50%;bottom:auto;width:auto;height:3px;transform:translateY(-50%);background:linear-gradient(90deg,transparent,var(--red) 20%,var(--red) 80%,transparent)}
+    .split:hover .side .scene{filter:none}
+    .emblem{width:120px;height:120px}
+    .emblem .core{inset:21px}
+    .open-sign{top:auto;bottom:46%;font-size:1.1rem}
+    .cover{min-height:88svh}
+  }
+  @media (max-width:520px){
+    .row{grid-template-columns:1fr}
+    .artists{gap:10px}
+    .artist .info{padding:.9rem}
+    .artist .ig{display:none}
+    .artist::after{background:linear-gradient(to top,rgba(0,0,0,.95),rgba(0,0,0,0) 65%)}
+    .artist h4{font-size:1.2rem}
+    .contact a,.contact div{grid-template-columns:1fr;gap:.2rem}
+    .strip-nav{display:none}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></symbol>
+</svg>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="True Warrior Project home">
+      <span class="logo-mark"><img src="images/g-logo.png" alt=""></span>
+      <span class="logo-text">True Warrior<small>Project · South Houston</small></span>
+    </a>
+    <ul>
+      <li><a href="#parlor">Parlor</a></li>
+      <li><a href="#house">House</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#book">Book</a></li>
+    </ul>
+    <a href="#book" class="btn">Book Now</a>
+    <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<!-- HERO: two doors -->
+<section class="split" aria-label="Choose a side">
+  <a href="#parlor" class="side parlor">
+    <div class="scene" data-photo="images/shop.jpg" data-alt="Inside True Warrior Tattoo"></div>
+    <div class="shade"></div>
+    <div class="parlor-sign neon" aria-hidden="true">Tattoo<small>Walk-ins welcome</small></div>
+    <div class="open-sign neon" aria-hidden="true">OPEN</div>
+    <div class="side-content">
+      <div class="side-kicker"><b>01</b> True Warrior Tattoo</div>
+      <h1>The Parlor</h1>
+      <p>Traditional tattoos with bold lines and heavy color, plus <strong>$20 piercings</strong>. Pull up a chair.</p>
+      <span class="enter">Step inside <svg><use href="#i-arrow"/></svg></span>
+    </div>
+  </a>
+
+  <a href="#house" class="side gym">
+    <div class="scene" data-photo="images/gym.jpg" data-alt="Inside True Warrior House"></div>
+    <div class="shade"></div>
+    <div class="gym-sign neon white" aria-hidden="true">No Bad<br>Reps<i></i><small>True Crew</small></div>
+    <div class="side-content">
+      <div class="side-kicker"><b>02</b> True Warrior House</div>
+      <div class="h1">The <span>House</span></div>
+      <p>Strength training for people who don't skip days. Join the <strong>True Crew</strong> and push each other to new PRs.</p>
+      <span class="enter">Hit the floor <svg><use href="#i-arrow"/></svg></span>
+    </div>
+  </a>
+
+  <div class="emblem" aria-hidden="true">
+    <svg class="ring" viewBox="0 0 150 150">
+      <defs><path id="circ" d="M75 75m-62 0a62 62 0 1 1 124 0a62 62 0 1 1-124 0"/></defs>
+      <circle cx="75" cy="75" r="72" fill="#070707"/>
+      <text font-family="Oswald" font-size="10.5" letter-spacing="3.2" fill="#efe8dc"><textPath href="#circ">NOT HERE TO PICK SIDES ✦ HERE TO TAKE OVER ✦</textPath></text>
+    </svg>
+    <div class="core"><img src="images/g-logo.png" alt=""></div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Traditional Tattoos</span><span>$20 Piercings</span><span>Walk-ins Welcome</span><span>No Bad Reps</span><span>True Crew</span><span>South Houston</span>
+    <span>Traditional Tattoos</span><span>$20 Piercings</span><span>Walk-ins Welcome</span><span>No Bad Reps</span><span>True Crew</span><span>South Houston</span>
+  </div>
+</div>
+
+<!-- 01 PARLOR -->
+<section id="parlor" class="chapter">
+  <div class="cover" data-photo="images/shop-front.jpg" data-alt="The front of True Warrior Tattoo under the True Warrior sign">
+    <div class="wrap">
+      <div class="label reveal"><b>01</b> The Parlor</div>
+      <img class="wordmark reveal" src="images/tattoo-logo.png" alt="True Warrior Tattoo">
+      <p class="lede reveal">South Houston's go-to shop for traditional tattoos. Bold lines, heavy color, built to hold for a lifetime — and a full piercing menu, lobes to septums.</p>
+      <div class="chips reveal"><span>American Traditional</span><span>Black &amp; Grey</span><span>Cover-ups</span><span class="hot">$20 Piercings</span></div>
+      <div class="actions reveal">
+        <a href="#book" class="btn">Book a Tattoo <svg><use href="#i-arrow"/></svg></a>
+        <a href="https://www.instagram.com/truewarriortattoo/" target="_blank" rel="noopener" class="btn ghost">See the work</a>
+      </div>
+    </div>
+    <div class="big-num" aria-hidden="true">01</div>
+  </div>
+
+  <div class="block wrap">
+    <div class="block-head">
+      <h3 class="reveal">The Artists</h3>
+      <p class="lede reveal" style="max-width:360px">Tap an artist to see their portfolio on Instagram.</p>
+    </div>
+    <div class="artists">
+      <a class="artist reveal" href="https://www.instagram.com/_just_joeking/" target="_blank" rel="noopener" data-photo="images/joe.jpg" data-alt="Joe Courier tattooing">
+        <span class="tag">Founder</span>
+        <div class="info"><div><h4>Joe Courier</h4><div class="role">Tattoo Artist</div></div><span class="ig"><svg><use href="#i-ig"/></svg></span></div>
+        <span class="bar"></span>
+      </a>
+      <a class="artist reveal" href="https://www.instagram.com/chriskeaslertattooer/" target="_blank" rel="noopener" data-photo="images/chris.jpg" data-alt="Chris Keasler drawing flash">
+        <div class="info"><div><h4>Chris Keasler</h4><div class="role">Tattoo Artist</div></div><span class="ig"><svg><use href="#i-ig"/></svg></span></div>
+        <span class="bar"></span>
+      </a>
+      <a class="artist reveal" href="https://www.instagram.com/nicnacz__tattoo/" target="_blank" rel="noopener" data-photo="images/nicholas.jpg" data-alt="Nicholas Gonzales tattooing">
+        <div class="info"><div><h4>Nicholas Gonzales</h4><div class="role">Tattoo Artist</div></div><span class="ig"><svg><use href="#i-ig"/></svg></span></div>
+        <span class="bar"></span>
+      </a>
+      <a class="artist reveal" href="https://www.instagram.com/shellpokes/" target="_blank" rel="noopener" data-photo="images/shell.jpg" data-alt="Shell piercing a client">
+        <span class="tag">Piercing</span>
+        <div class="info"><div><h4>Shell</h4><div class="role">Piercing Artist</div></div><span class="ig"><svg><use href="#i-ig"/></svg></span></div>
+        <span class="bar"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 02 HOUSE -->
+<section id="house" class="chapter">
+  <div class="cover" data-photo="images/gym-1.jpg" data-alt="Training at True Warrior House">
+    <div class="wrap">
+      <div class="label reveal"><b>02</b> The House</div>
+      <img class="wordmark reveal" src="images/house-logo.png" alt="True Warrior House">
+      <p class="lede reveal">Strength training for people who don't skip days. Heavy iron, real effort, no shortcuts.</p>
+      <div class="actions reveal"><a href="mailto:info@truewarriorproject.com?subject=Join%20the%20True%20Crew" class="btn">Join the True Crew <svg><use href="#i-arrow"/></svg></a></div>
+    </div>
+    <div class="big-num" aria-hidden="true">02</div>
+  </div>
+
+  <div class="block wrap crew">
+    <div>
+      <h3 class="reveal">Don't <span class="outline">lift</span><br><em style="font-style:normal;color:var(--red)">alone.</em></h3>
+      <p class="lede reveal">The True Crew is a group of people who share a passion for strength training. We meet up locally to swap tips, share stories and push each other while we get ready to reopen the House.</p>
+      <ul class="ticks reveal">
+        <li>Local True Crew meetups</li>
+        <li>House reopening soon</li>
+        <li>No bad reps</li>
+      </ul>
+    </div>
+    <div class="crew-photo reveal" data-photo="images/gym-2.jpg" data-alt="Members of the True Crew in the gym"></div>
+  </div>
+</section>
+
+<!-- 03 SHOP -->
+<section id="shop" class="chapter block" style="padding-top:clamp(40px,5vw,60px)">
+  <div class="wrap">
+    <div class="block-head">
+      <div>
+        <div class="label reveal"><b>03</b> The G Brand</div>
+        <h2 class="reveal" style="margin-top:1rem">Wear the <em>G.</em></h2>
+        <p class="ship reveal">Free shipping on orders <b>$99+</b></p>
+      </div>
+      <div class="actions reveal" style="align-items:center">
+        <div class="strip-nav"><button type="button" data-dir="-1" aria-label="Previous"><svg><use href="#i-arrow"/></svg></button><button type="button" data-dir="1" aria-label="Next"><svg><use href="#i-arrow"/></svg></button></div>
+        <a class="btn ghost" href="https://truewarriorproject.com/the-g-brand" target="_blank" rel="noopener">Shop All</a>
+      </div>
+    </div>
+    <div class="strip reveal">
+      <a class="item" href="https://truewarriorproject.com/the-g-brand/ols/products/no-bad-reps-black-75aac3" target="_blank" rel="noopener"><div class="item-img" data-photo="images/merch-nobadreps.jpg" data-alt="No Bad Reps tee"></div><h5>No Bad Reps</h5><div class="variant">Black · Grey</div></a>
+      <a class="item" href="https://truewarriorproject.com/the-g-brand/ols/products/ycfwu-vol-2-gorilla-skull-edition-0337b3" target="_blank" rel="noopener"><div class="item-img" data-photo="images/merch-gorilla.jpg" data-alt="YCFWU Vol.2 Gorilla Skull tee"></div><h5>YCFWU Gorilla Skull</h5><div class="variant">Pepper Grey</div></a>
+      <a class="item" href="https://truewarriorproject.com/the-g-brand/ols/products/killer-crop-heavyweight-048b5e" target="_blank" rel="noopener"><div class="item-img" data-photo="images/merch-killer-crop.jpg" data-alt="Killer Crop Heavyweight"></div><h5>Killer Crop</h5><div class="variant">Heavyweight</div></a>
+      <a class="item" href="https://truewarriorproject.com/the-g-brand/ols/products/southside-bodybuilding-f3d68b" target="_blank" rel="noopener"><div class="item-img" data-photo="images/merch-southside.jpg" data-alt="Southside Bodybuilding tee"></div><h5>Southside Bodybuilding</h5><div class="variant">Tee</div></a>
+      <a class="item" href="https://truewarriorproject.com/the-g-brand/ols/products/7-jersey-shorts-emerald-green-lavender-02a91a" target="_blank" rel="noopener"><div class="item-img" data-photo="images/merch-shorts.jpg" data-alt="7 Jersey Shorts"></div><h5>7 Jersey Shorts</h5><div class="variant">Emerald / Lavender</div></a>
+      <a class="item" href="https://truewarriorproject.com/the-g-brand/ols/products/open-back-g-crop-top-red-butter-slim-fit-f4718b" target="_blank" rel="noopener"><div class="item-img" data-photo="images/merch-crop-red.jpg" data-alt="Open Back G Crop in red"></div><h5>Open Back G Crop</h5><div class="variant">Red Butter</div></a>
+      <a class="item" href="https://truewarriorproject.com/the-g-brand/ols/products/open-back-g-crop-pure-white-slim-fit-85c788" target="_blank" rel="noopener"><div class="item-img" data-photo="images/merch-crop-white.jpg" data-alt="Open Back G Crop in white"></div><h5>Open Back G Crop</h5><div class="variant">Pure White</div></a>
+      <a class="item" href="https://truewarriorproject.com/the-g-brand/ols/products/ninja-turtle-1b61cc" target="_blank" rel="noopener"><div class="item-img" data-photo="images/merch-tmnt.jpg" data-alt="TMNT Pump Cover"></div><h5>TMNT Pump Cover</h5><div class="variant">Pump Cover</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- 04 BOOK & VISIT -->
+<section id="book" class="chapter block book">
+  <div class="wrap book-grid">
+    <div>
+      <div class="label reveal"><b>04</b> Book &amp; Visit</div>
+      <h2 class="reveal" style="margin-top:1rem">Get <span class="gothic">Inked.</span></h2>
+      <div class="walkin reveal"><i></i>Walk-ins welcome</div>
+      <div class="contact reveal">
+        <a href="https://maps.google.com/?q=11+Spencer+Hwy+South+Houston+TX+77587" target="_blank" rel="noopener"><span>Address</span><strong>11 Spencer Hwy, South Houston, TX 77587</strong></a>
+        <div><span>Hours</span><strong>Open 7 days · 1PM – Late</strong></div>
+        <a href="tel:+18327672954"><span>Call</span><strong>(832) 767-2954</strong></a>
+        <a href="mailto:info@truewarriorproject.com"><span>Email</span><strong style="text-transform:none">info@truewarriorproject.com</strong></a>
+      </div>
+    </div>
+    <form id="bookForm" class="reveal">
+      <h3>Book Your Next Tattoo</h3>
+      <div class="row">
+        <div class="field"><label for="f-name">Name *</label><input id="f-name" name="name" required autocomplete="name"></div>
+        <div class="field"><label for="f-phone">Phone *</label><input id="f-phone" name="phone" type="tel" required autocomplete="tel"></div>
+      </div>
+      <div class="field"><label for="f-email">Email *</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+      <div class="row">
+        <div class="field"><label for="f-artist">Artist *</label>
+          <select id="f-artist" name="artist" required>
+            <option value="">Choose artist</option>
+            <option>Joe Courier</option><option>Chris Keasler</option><option>Nicholas Gonzales</option><option>Shell (Piercing)</option><option>First available</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-type">Service</label>
+          <select id="f-type" name="service"><option>Tattoo</option><option>Piercing</option><option>Cover-up</option><option>Consultation</option></select>
+        </div>
+      </div>
+      <div class="field"><label for="f-idea">Your idea</label><textarea id="f-idea" name="idea" placeholder="Placement, size, style, reference ideas…"></textarea></div>
+      <button class="btn" type="submit">Send Request <svg><use href="#i-arrow"/></svg></button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <a href="#top" class="logo"><span class="logo-mark"><img src="images/g-logo.png" alt=""></span><span class="logo-text">True Warrior<small>Project</small></span></a>
+    <span>© <span id="yr"></span> True Warrior Project · Bold will hold.</span>
+    <div class="socials">
+      <a class="ig" href="https://www.instagram.com/truewarriortattoo/" target="_blank" rel="noopener" aria-label="True Warrior Tattoo on Instagram"><svg><use href="#i-ig"/></svg></a>
+      <a class="ig" href="https://www.instagram.com/the.gbrand/" target="_blank" rel="noopener" aria-label="The G Brand on Instagram" style="font-family:var(--gothic);font-size:1.2rem">G</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.querySelector('header');
+  addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 30), {passive:true});
+
+  const burger = document.querySelector('.burger');
+  burger.addEventListener('click', () => {
+    const open = document.body.classList.toggle('menu-open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  // Close the menu before jumping, since the page can't scroll while it's open
+  document.querySelectorAll('.nav ul a').forEach(a => a.addEventListener('click', e => {
+    if (!document.body.classList.contains('menu-open')) return;
+    e.preventDefault();
+    document.body.classList.remove('menu-open');
+    burger.setAttribute('aria-expanded', false);
+    document.querySelector(a.getAttribute('href')).scrollIntoView();
+    history.replaceState(null, '', a.getAttribute('href'));
+  }));
+
+  // Highlight the nav item for the chapter on screen
+  const navLinks = [...document.querySelectorAll('.nav ul a')];
+  const spy = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+  }), {rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('.chapter').forEach(s => spy.observe(s));
+
+  // Photo slots: the file at data-photo is dropped in once it loads
+  document.querySelectorAll('[data-photo]').forEach(el => {
+    const img = new Image();
+    img.className = 'photo';
+    img.alt = el.dataset.alt || '';
+    img.onload = () => { el.prepend(img); el.classList.add('has-photo'); };
+    img.src = el.dataset.photo;
+  });
+
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 80 + 'ms';
+    io.observe(el);
+  });
+  // Slow zoom-out on the chapter cover photos
+  const coverIo = new IntersectionObserver(entries => entries.forEach(e => e.target.classList.toggle('in-view', e.isIntersecting)), {threshold:.25});
+  document.querySelectorAll('.cover').forEach(c => coverIo.observe(c));
+
+  const strip = document.querySelector('.strip');
+  document.querySelectorAll('.strip-nav button').forEach(b => b.addEventListener('click', () => {
+    strip.scrollBy({left: b.dataset.dir * strip.clientWidth * .8, behavior:'smooth'});
+  }));
+
+  // No backend yet: hand the request off to the shop's inbox
+  document.getElementById('bookForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(e.target));
+    const body = `Name: ${d.name}\nPhone: ${d.phone}\nEmail: ${d.email}\nArtist: ${d.artist}\nService: ${d.service}\n\nIdea:\n${d.idea}`;
+    location.href = `mailto:info@truewarriorproject.com?subject=${encodeURIComponent('Booking request — ' + d.name)}&body=${encodeURIComponent(body)}`;
+  });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
